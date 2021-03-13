@@ -170,9 +170,8 @@ switch($_SERVER['REQUEST_METHOD']){
         break;
     case 'DELETE':
         if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
-            $json = file_get_contents('php://input');
             unset($badges[ $resource_id ]);
-            echo json_encode($badges);
         }
+        echo json_encode($badges);
         break;
 }
