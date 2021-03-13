@@ -164,6 +164,8 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'POST':
         $json = file_get_contents('php://input');
         array_push($badges, json_decode($json, true));
+        $key = count($badges) - 1;
+        $badges[ $key ]['id'] = $resource_id;
         echo json_encode($badges);
         break;
     case 'PUT':
