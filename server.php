@@ -156,6 +156,7 @@ switch($_SERVER['REQUEST_METHOD']){
         }else{
             // echo json_encode($badges[ $resource_id ]);
             $key = array_search($resource_id, array_column($badges, 'id'));
+            echo $key;
             echo json_encode($badges[$key]);
         }
         // }else{
