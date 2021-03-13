@@ -173,8 +173,9 @@ switch($_SERVER['REQUEST_METHOD']){
             if(!empty($key) || $key === 0){
                 $json = file_get_contents('php://input');
                 $badges[ $key ] = json_decode($json, true);
-                array_push($badges[ $key ], $badges[ $key ]['id'] = $resource_id);
-                echo json_encode($badges);
+                echo $badges[ $key ];
+                // array_push($badges[ $key ], 'id' => $resource_id);
+                // echo json_encode($badges);
             }else{
 
                 http_response_code( 404 );
