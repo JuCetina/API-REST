@@ -182,7 +182,6 @@ switch($_SERVER['REQUEST_METHOD']){
         }
         break;
     case 'DELETE':
-        // if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
         if(!empty($resource_id)){
             $key = array_search($resource_id, array_column($badges, 'id'));
             if(!empty($key) || $key === 0){
