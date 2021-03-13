@@ -136,6 +136,7 @@ if(!in_array($resource, $allowedResources)){
 $resource_id = array_key_exists('resource_id', $_GET) ? $_GET['resource_id'] : '';
 
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 
 switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
