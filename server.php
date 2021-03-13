@@ -173,8 +173,7 @@ switch($_SERVER['REQUEST_METHOD']){
             if(!empty($key) || $key === 0){
                 $json = file_get_contents('php://input');
                 $badges[ $key ] = json_decode($json, true);
-                $id = [ "id" => $resource_id ];
-                array_push($badges[ $key ], $id);
+                $badges[ $key ]['id'] = $resource_id;
                 echo json_encode($badges);
             }else{
 
