@@ -185,7 +185,7 @@ switch($_SERVER['REQUEST_METHOD']){
         if(!empty($resource_id)){
             $key = array_search($resource_id, array_column($badges, 'id'));
             if(!empty($key) || $key === 0){
-                unset($badges[ $key]);
+                unset($badges[ $key ]);
                 echo json_encode($badges);
             }else{
 
