@@ -9,11 +9,11 @@
 
 $matches = [];
 
-//Para local
+//Para local  /api_rest/router.php/badges/1
 //if(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matches)){
     // $_GET['resource'] = $matches[3];
     // $_GET['resource_id'] = $matches[4];
-//Para producción
+//Para producción  /router.php/badges/1
 if(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matches)){
     $_GET['resource'] = $matches[2];
     $_GET['resource_id'] = $matches[3];
@@ -21,10 +21,10 @@ if(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matc
     error_log(print_r($matches, 1));
     require 'server.php';
 
-//Para local
+//Para local /api_rest/router.php/badges
 //} elseif(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)\/?/', $_SERVER["REQUEST_URI"], $matches)){
     // $_GET['resource'] = $matches[3];
-//Para producción
+//Para producción /router.php/badges/
 } elseif(preg_match('/\/([^\/]+)\/([^\/]+)\/?/', $_SERVER["REQUEST_URI"], $matches)){
     $_GET['resource'] = $matches[2];
 
