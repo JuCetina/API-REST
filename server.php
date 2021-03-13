@@ -157,7 +157,7 @@ switch($_SERVER['REQUEST_METHOD']){
             
             $key = array_search($resource_id, array_column($badges, 'id'));
             echo $key;
-            if(array_key_exists($key, $badges)){
+            if(array_key_exists($key, array_column($badges, 'id'))){
                 echo json_encode($badges[ $key ]);
             }
             else{
