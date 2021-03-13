@@ -157,10 +157,17 @@ switch($_SERVER['REQUEST_METHOD']){
             // echo json_encode($badges[ $resource_id ]);
             $key = array_search($resource_id, array_column($badges, 'id'));
             echo $key;
-            echo json_encode($badges[$key]);
+            if($key){
+
+                echo json_encode($badges[$key]);
+            }
+            else{
+                
+                http_response_code( 404 );
+            }
         }
         // }else{
-        //     http_response_code( 404 );
+            //     http_response_code( 404 );
         // }
         break;
     case 'POST':
