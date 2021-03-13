@@ -138,13 +138,13 @@ $resource_id = array_key_exists('resource_id', $_GET) ? $_GET['resource_id'] : '
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
-header('Allow: GET, POST, OPTIONS, PUT, DELETE');
-$method = $_SERVER['REQUEST_METHOD'];
-if($method == "OPTIONS") {
-    die();
-}
+// header('Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method');
+// header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+// header('Allow: GET, POST, OPTIONS, PUT, DELETE');
+// $method = $_SERVER['REQUEST_METHOD'];
+// if($method == "OPTIONS") {
+//     die();
+// }
 
 
 
@@ -157,9 +157,10 @@ switch($_SERVER['REQUEST_METHOD']){
             // echo json_encode($badges[ $resource_id ]);
             $key = array_search($resource_id, array_column($badges, 'id'));
             echo json_encode($badges[$key]);
-        }else{
-            http_response_code( 404 );
         }
+        // }else{
+        //     http_response_code( 404 );
+        // }
         break;
     case 'POST':
         $json = file_get_contents('php://input');
