@@ -163,7 +163,10 @@ switch($_SERVER['REQUEST_METHOD']){
         break;
     case 'POST':
         $json = file_get_contents('php://input');
-        array_push($badges, json_decode($json, true));
+        $json = json_decode($json, true);
+        $id = $json.length;
+        array_push($json, $id);
+        array_push($badges, $json);
         echo json_encode($badges);
         break;
     case 'PUT':
