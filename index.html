@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>AJAX</title>
+</head>
+<body>
+    <input type="button" value="Cargar Badges" id="loadBadges">
+    <div style="display: none;" id="messages">
+        <p></p>
+    </div>
+    <table id="badgesTable" class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Job</th>
+                <th>Twitter</th>
+                <th>Avatar URL</th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+
+    </table>
+        
+    <div style="display: none;" id="badgeForm">
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="badgeFirstName" id="badgeFirstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="badgeLastName" id="badgeLastName"></td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td><input type="text" name="badgeEmail" id="badgeEmail"></td>
+            </tr>
+            <tr>
+                <td>Job:</td>
+                <td><input type="text" name="badgeJob" id="badgeJob"></td>
+            </tr>
+            <tr>
+                <td>Twitter:</td>
+                <td><input type="text" name="badgeTwitter" id="badgeTwitter"></td>
+            </tr>
+            <tr>
+                <td>Avatar URL:</td>
+                <td><input type="text" name="badgeAvatar" id="badgeAvatar"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="Guardar Badge" id="badgeSave">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="ajax.js"></script>
+</body>
+</html>
