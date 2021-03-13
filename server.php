@@ -152,11 +152,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if(empty($resource_id)){
             echo json_encode($badges);
-        //}elseif(array_key_exists($resource_id, $badges)) {
         }else{
             
             $key = array_search($resource_id, array_column($badges, 'id'));
-            echo $key;
+            
             if(!empty($key) || $key === 0){
                 echo json_encode($badges[ $key ]);
             }
@@ -171,17 +170,31 @@ switch($_SERVER['REQUEST_METHOD']){
         echo json_encode($badges);
         break;
     case 'PUT':
-        if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
-            $json = file_get_contents('php://input');
-            $badges[ $resource_id ] = json_decode($json, true);
-            echo json_encode($badges);
+        if(!empty($resource_id)){
+            $key = array_search($resource_id, array_column($badges, 'id'));
+            echo $key;
+            if(!empty($key) || $key === 0){
+                $json = file_get_contents('php://input');
+                $badges[ $key ] = json_decode($json, true);
+                echo json_encode($badges);
+            }
+            else{
+                http_response_code( 404 );
+            }
         }
         break;
     case 'DELETE':
-        if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
-            $json = file_get_contents('php://input');
-            unset($badges[ $resource_id ]);
-            echo json_encode($badges);
+        if(!empty($resource_id)){
+            $key = array_search($resource_id, array_column($badges, 'id'));
+            echo $key;
+            if(!empty($key) || $key === 0){
+                $json = file_get_contents('php://input');
+                unset($badges[ $key ]);
+                echo json_encode($badges);
+            }
+            else{
+                http_response_code( 404 );
+            }
         }
         break;
 }
