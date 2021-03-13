@@ -158,16 +158,13 @@ switch($_SERVER['REQUEST_METHOD']){
             $key = array_search($resource_id, array_column($badges, 'id'));
             echo $key;
             if(!empty($key)){
-                echo json_encode($badges[$key]);
+                echo json_encode($badges[ $key ]);
             }
             else{
                 
                 http_response_code( 404 );
             }
         }
-        // }else{
-            //     http_response_code( 404 );
-        // }
         break;
     case 'POST':
         $json = file_get_contents('php://input');
