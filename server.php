@@ -186,12 +186,12 @@ switch($_SERVER['REQUEST_METHOD']){
         if(!empty($resource_id)){
             $key = array_search($resource_id, array_column($badges, 'id'));
             if(!empty($key) || $key === 0){
-                unset($badges[ $key ]);
+                array_splice($badges, $key, 1);
+                echo json_encode($badges);
             }else{
                 
                 http_response_code( 404 );
             }
-            echo json_encode($badges);
         }
         break;
 }
