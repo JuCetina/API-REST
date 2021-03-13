@@ -150,7 +150,6 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if(empty($resource_id)){
             echo json_encode($badges);
-        // }elseif(array_key_exists($resource_id, $badges)) {
         }else{
             $key = array_search($resource_id, array_column($badges, 'id'));
             if(!empty($key) || $key === 0){
@@ -169,7 +168,6 @@ switch($_SERVER['REQUEST_METHOD']){
         echo json_encode($badges);
         break;
     case 'PUT':
-        // if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
         if(!empty($resource_id)){
             $key = array_search($resource_id, array_column($badges, 'id'));
             if(!empty($key) || $key === 0){
@@ -189,11 +187,11 @@ switch($_SERVER['REQUEST_METHOD']){
             $key = array_search($resource_id, array_column($badges, 'id'));
             if(!empty($key) || $key === 0){
                 unset($badges[ $key ]);
-                echo json_encode($badges);
             }else{
-
+                
                 http_response_code( 404 );
             }
+            echo json_encode($badges);
         }
         break;
 }
