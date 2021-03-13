@@ -146,8 +146,11 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if(empty($resource_id)){
             echo json_encode($badges);
-        }elseif(array_key_exists($resource_id, $badges)) {
-            echo json_encode($badges[ $resource_id ]);
+        //}elseif(array_key_exists($resource_id, $badges)) {
+        }else{
+            // echo json_encode($badges[ $resource_id ]);
+            $key = array_search($resource_id, array_column($badges, 'id'));
+            echo json_encode($badges[$key]);
         }else{
             http_response_code( 404 );
         }
