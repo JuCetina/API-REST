@@ -78,7 +78,7 @@ $allowedResources = [
 ];
 
 $badges = [
-    1 => [
+    [
         "id" => "1",
         "firstName" => "Zoie",
         "lastName"  => "Grant",
@@ -87,7 +87,7 @@ $badges = [
         "twitter" => "ZoieGrant05512-2019",
         "avatarUrl" => "https://www.gravatar.com/avatar/0fc6d5ee2ee176d4581acf6a7e5644cc?d=identicon",
     ],
-    2 => [
+    [
         "id" => "2",
         "firstName" => "Dustin",
         "lastName" => "Stehr",
@@ -96,7 +96,7 @@ $badges = [
         "twitter" => "DustinStehr77585-9157",
         "avatarUrl" => "https://picsum.photos/80",
     ],
-    3 => [
+    [
         "id" => "3",
         "firstName" => "Karlee",
         "lastName" => "Satterfield",
@@ -105,7 +105,7 @@ $badges = [
         "twitter" => "KarleeSatterfield32692-9732",
         "avatarUrl" => "https://www.gravatar.com/avatar/c2d679f9b44e1869548ab95aac18b7c9?d=identicon",
     ],
-    4 => [
+    [
         "id" => "4",
         "firstName" => "Ernie",
         "lastName" => "Schmidt",
@@ -114,7 +114,7 @@ $badges = [
         "twitter" => "ErnieSchmidt56445-6854",
         "avatarUrl" => "https://www.gravatar.com/avatar/6a7e6f60ad63c102322894ab94a26f2f?d=identicon",
     ],
-    5 => [
+    [
         "id" => "5",
         "firstName" => "Kelly",
         "lastName" => "Corkery",
