@@ -7,7 +7,7 @@ $('#loadBadges').click( function(){
     $('#messages').show();
     $.ajax(
         {
-            'url': window.location.href + (window.location.href.substr(window.location.href.length - 1) === '/' ? '' : '/') + 'badges',
+            'url': window.location.href + (window.location.href.substr(window.location.href.length - 1) === '/' ? '' : '/') + 'router.php/badges',
             'success': function( data ){
                 $('#messages').hide();
                 $('#badgesTable > tbody').empty();
@@ -34,7 +34,7 @@ $('#badgeSave').click( function(){
     $('#messages').show();
     $.ajax(
         {
-            'url': window.location.href + (window.location.href.substr(window.location.href.length - 1) === '/' ? '' : '/') + 'badges',
+            'url': window.location.href + (window.location.href.substr(window.location.href.length - 1) === '/' ? '' : '/') + 'router.php/badges',
             'method': 'POST',
             'data': JSON.stringify( newBadge ),
             'success': function(){
