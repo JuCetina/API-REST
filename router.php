@@ -9,15 +9,24 @@
 
 $matches = [];
 
-if(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matches)){
-    $_GET['resource'] = $matches[3];
-    $_GET['resource_id'] = $matches[4];
+//Para local
+//if(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matches)){
+    // $_GET['resource'] = $matches[3];
+    // $_GET['resource_id'] = $matches[4];
+//Para producción
+if(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matches)){
+    $_GET['resource'] = $matches[2];
+    $_GET['resource_id'] = $matches[3];
 
     error_log(print_r($matches, 1));
     require 'server.php';
 
-} elseif(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)\/?/', $_SERVER["REQUEST_URI"], $matches)){
-    $_GET['resource'] = $matches[3];
+//Para local
+//} elseif(preg_match('/\/([^\/]+)\/([^\/]+)\/([^\/]+)\/?/', $_SERVER["REQUEST_URI"], $matches)){
+    // $_GET['resource'] = $matches[3];
+//Para producción
+} elseif(preg_match('/\/([^\/]+)\/([^\/]+)\/?/', $_SERVER["REQUEST_URI"], $matches)){
+    $_GET['resource'] = $matches[2];
 
     error_log(print_r($matches, 1));
     require 'server.php';
