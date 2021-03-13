@@ -157,12 +157,11 @@ switch($_SERVER['REQUEST_METHOD']){
             
             $key = array_search($resource_id, array_column($badges, 'id'));
             echo $key;
-            if(array_key_exists($key, array_column($badges, 'id'))){
-                echo json_encode($badges[ $key ]);
+            if(empty($key)){
+                http_response_code( 404 );
             }
             else{
-                
-                http_response_code( 404 );
+                echo json_encode($badges[ $key ]);
             }
         }
         break;
