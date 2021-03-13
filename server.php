@@ -78,7 +78,7 @@ $allowedResources = [
 ];
 
 $badges = [
-    [
+    1 => [
         "id" => "1",
         "firstName" => "Zoie",
         "lastName"  => "Grant",
@@ -87,7 +87,7 @@ $badges = [
         "twitter" => "ZoieGrant05512-2019",
         "avatarUrl" => "https://www.gravatar.com/avatar/0fc6d5ee2ee176d4581acf6a7e5644cc?d=identicon",
     ],
-    [
+    2 => [
         "id" => "2",
         "firstName" => "Dustin",
         "lastName" => "Stehr",
@@ -96,7 +96,7 @@ $badges = [
         "twitter" => "DustinStehr77585-9157",
         "avatarUrl" => "https://picsum.photos/80",
     ],
-    [
+    3 => [
         "id" => "3",
         "firstName" => "Karlee",
         "lastName" => "Satterfield",
@@ -105,7 +105,7 @@ $badges = [
         "twitter" => "KarleeSatterfield32692-9732",
         "avatarUrl" => "https://www.gravatar.com/avatar/c2d679f9b44e1869548ab95aac18b7c9?d=identicon",
     ],
-    [
+    4 => [
         "id" => "4",
         "firstName" => "Ernie",
         "lastName" => "Schmidt",
@@ -114,7 +114,7 @@ $badges = [
         "twitter" => "ErnieSchmidt56445-6854",
         "avatarUrl" => "https://www.gravatar.com/avatar/6a7e6f60ad63c102322894ab94a26f2f?d=identicon",
     ],
-    [
+    5 => [
         "id" => "5",
         "firstName" => "Kelly",
         "lastName" => "Corkery",
@@ -150,48 +150,28 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if(empty($resource_id)){
             echo json_encode($badges);
+        }elseif(array_key_exists($resource_id, $badges)) {
+            echo json_encode($badges[ $resource_id ]);
         }else{
-            $key = array_search($resource_id, array_column($badges, 'id'));
-            if(!empty($key) || $key === 0){
-                echo json_encode($badges[ $key ]);
-            }else{
-
-                http_response_code( 404 );
-            }
+            http_response_code( 404 );
         }
         break;
     case 'POST':
         $json = file_get_contents('php://input');
         array_push($badges, json_decode($json, true));
-        $key = (count($badges) - 1);
-        $badges[ $key ]['id'] = count($badges);
         echo json_encode($badges);
         break;
     case 'PUT':
-        if(!empty($resource_id)){
-            $key = array_search($resource_id, array_column($badges, 'id'));
-            if(!empty($key) || $key === 0){
-                $json = file_get_contents('php://input');
-                $badges[ $key ] = json_decode($json, true);
-                $badges[ $key ]['id'] = $resource_id;
-                echo json_encode($badges);
-            }else{
-
-                http_response_code( 404 );
-            }
+        if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
+            $json = file_get_contents('php://input');
+            $badges[ $resource_id ] = json_decode($json, true);
+            echo json_encode($badges);
         }
         break;
     case 'DELETE':
-        // if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
-        if(!empty($resource_id)){
-            $key = array_search($resource_id, array_column($badges, 'id'));
-            if(!empty($key) || $key === 0){
-                array_splice($badges, $key, 1);
-                echo json_encode($badges);
-            }else{
-                
-                http_response_code( 404 );
-            }
+        if(!empty($resource_id) && array_key_exists($resource_id, $badges)){
+            unset($badges[ $resource_id ]);
         }
+        echo json_encode($badges);
         break;
 }
