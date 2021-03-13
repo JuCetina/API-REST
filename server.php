@@ -152,12 +152,11 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if(empty($resource_id)){
             echo json_encode($badges);
-        //}elseif(array_key_exists($resource_id, $badges)) {
         }else{
-            // echo json_encode($badges[ $resource_id ]);
+            
             $key = array_search($resource_id, array_column($badges, 'id'));
             echo $key;
-            if(!empty($key)){
+            if($key){
                 echo json_encode($badges[ $key ]);
             }
             else{
